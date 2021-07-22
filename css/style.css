@@ -1,0 +1,35 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+p.flushright {
+  text-align: right;
+}
+blockquote > p:last-child {
+  text-align: right;
+}
+blockquote > p:first-child {
+  text-align: inherit;
+}
+
+.Rchunk {
+  background-color: #f2dede !important;
+  font-weight: bolder;
+  color: red !important;
+}
+
+.Rout {
+  background-color: #d9edf7 !important;
+  font-weight: bolder;
+  color: blue !important;
+}

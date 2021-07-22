@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>B 基于biblatex生成参考文献 | Bookdown中文书稿写作手册</title>
+  <meta name="description" content="bookdown写书体验非常好." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="B 基于biblatex生成参考文献 | Bookdown中文书稿写作手册" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://tangyc8866.github.io/bookdown-tyc/" />
+  
+  <meta property="og:description" content="bookdown写书体验非常好." />
+  <meta name="github-repo" content="tangyc8866.github.io/bookdown-tyc/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="B 基于biblatex生成参考文献 | Bookdown中文书稿写作手册" />
+  
+  <meta name="twitter:description" content="bookdown写书体验非常好." />
+  
+
+<meta name="author" content="汤银才" />
+
+
+<meta name="date" content="2021-07-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mjx.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    Macros: {
+       bm: ["{\\boldsymbol #1}",1],
+    }, 
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+
+</script>
+<script type="text/javascript"
+   src="http://127.0.0.1/MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">bookdown排版模板</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 引言</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#sec1-1"><i class="fa fa-check"></i><b>1.1</b> 中国图书出版的变化</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#sec1-2"><i class="fa fa-check"></i><b>1.2</b> 统计类图书的核心要素</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#sec1-3"><i class="fa fa-check"></i><b>1.3</b> 统计数据分析类图书模板的选择</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#sec1-3-1"><i class="fa fa-check"></i><b>1.3.1</b> 基于纯 <span class="math inline">\(\TeX\)</span> 模板</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#sec1-3-2"><i class="fa fa-check"></i><b>1.3.2</b> <code>R</code>markdown与<span class="math inline">\(\TeX\)</span>的结合</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#sec1-3-3"><i class="fa fa-check"></i><b>1.3.3</b> <code>Rmarkdown</code>向<code>Bookdown</code>过渡</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>2</b> <code>bookdown</code>速览</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bookdown.html"><a href="bookdown.html#sec2-1"><i class="fa fa-check"></i><b>2.1</b> 关于<code>bookdown</code></a></li>
+<li class="chapter" data-level="2.2" data-path="bookdown.html"><a href="bookdown.html#sec2-2"><i class="fa fa-check"></i><b>2.2</b> 快速排版的思路</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdown.html"><a href="bookdown.html#sec2-3"><i class="fa fa-check"></i><b>2.3</b> 书的基本设置</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="bookdown.html"><a href="bookdown.html#index.rmd文件"><i class="fa fa-check"></i><b>2.3.1</b> <code>index.Rmd</code>文件</a></li>
+<li class="chapter" data-level="2.3.2" data-path="bookdown.html"><a href="bookdown.html#bookdown.yml文件"><i class="fa fa-check"></i><b>2.3.2</b> <code>_bookdown.yml</code>文件</a></li>
+<li class="chapter" data-level="2.3.3" data-path="bookdown.html"><a href="bookdown.html#output.yml文件"><i class="fa fa-check"></i><b>2.3.3</b> <code>_output.yml</code>文件</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="bookdown.html"><a href="bookdown.html#sec2-4"><i class="fa fa-check"></i><b>2.4</b> 章节结构</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdown.html"><a href="bookdown.html#sec2-5"><i class="fa fa-check"></i><b>2.5</b> 书的编译</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdown.html"><a href="bookdown.html#sec2-6"><i class="fa fa-check"></i><b>2.6</b> 浮动对象标签与引用汇总</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sections.html"><a href="sections.html"><i class="fa fa-check"></i><b>3</b> Bookdow中 的章节标题</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sections.html"><a href="sections.html#sec3-1"><i class="fa fa-check"></i><b>3.1</b> 章节标题</a></li>
+<li class="chapter" data-level="3.2" data-path="sections.html"><a href="sections.html#sec3-2"><i class="fa fa-check"></i><b>3.2</b> 章节标题标签的设定与引用</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="formulas.html"><a href="formulas.html"><i class="fa fa-check"></i><b>4</b> <code>Bookdown</code>中的公式与定理</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="formulas.html"><a href="formulas.html#sec4-1"><i class="fa fa-check"></i><b>4.1</b> 公式标签的设定</a></li>
+<li class="chapter" data-level="4.2" data-path="formulas.html"><a href="formulas.html#sec4-2"><i class="fa fa-check"></i><b>4.2</b> 定理标签的设定</a></li>
+<li class="chapter" data-level="4.3" data-path="formulas.html"><a href="formulas.html#sec4-3"><i class="fa fa-check"></i><b>4.3</b> 定理与公式的引用</a></li>
+<li class="chapter" data-level="4.4" data-path="formulas.html"><a href="formulas.html#sec4-4"><i class="fa fa-check"></i><b>4.4</b> 数学公式的扩展</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="figures.html"><a href="figures.html"><i class="fa fa-check"></i><b>5</b> <code>Bookdown</code>中的图形</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="figures.html"><a href="figures.html#sec5-1"><i class="fa fa-check"></i><b>5.1</b> 由<code>R</code>生成单个图形示例</a></li>
+<li class="chapter" data-level="5.2" data-path="figures.html"><a href="figures.html#sec5-2"><i class="fa fa-check"></i><b>5.2</b> 由<code>R</code>生成两个图形并置示例</a></li>
+<li class="chapter" data-level="5.3" data-path="figures.html"><a href="figures.html#sec5-3"><i class="fa fa-check"></i><b>5.3</b> 由<code>R</code>生成两个图形堆叠示例</a></li>
+<li class="chapter" data-level="5.4" data-path="figures.html"><a href="figures.html#sec5-4"><i class="fa fa-check"></i><b>5.4</b> 静态图形示例</a></li>
+<li class="chapter" data-level="5.5" data-path="figures.html"><a href="figures.html#sec5-5"><i class="fa fa-check"></i><b>5.5</b> 图形引用</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> <code>Bookdown</code>中的表格</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tables.html"><a href="tables.html#sec6-1"><i class="fa fa-check"></i><b>6.1</b> 表格示例1：由数据生成表格</a></li>
+<li class="chapter" data-level="6.2" data-path="tables.html"><a href="tables.html#sec6-2"><i class="fa fa-check"></i><b>6.2</b> 表格示例2: 由数据框构造表格</a></li>
+<li class="chapter" data-level="6.3" data-path="tables.html"><a href="tables.html#sec6-3"><i class="fa fa-check"></i><b>6.3</b> 表格引用</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="textref.html"><a href="textref.html"><i class="fa fa-check"></i><b>7</b> <code>Bookdown</code>中的文本参考</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="textref.html"><a href="textref.html#sec7-1"><i class="fa fa-check"></i><b>7.1</b> 文本标签的设定与引用</a></li>
+<li class="chapter" data-level="7.2" data-path="textref.html"><a href="textref.html#sec7-2"><i class="fa fa-check"></i><b>7.2</b> 文本引用场景</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bibs.html"><a href="bibs.html"><i class="fa fa-check"></i><b>8</b> <code>Bookdown</code>中的文献排版</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="bibs.html"><a href="bibs.html#sec8-1"><i class="fa fa-check"></i><b>8.1</b> 文献库建立样例</a></li>
+<li class="chapter" data-level="8.2" data-path="bibs.html"><a href="bibs.html#sec8-2"><i class="fa fa-check"></i><b>8.2</b> 文献风格</a></li>
+<li class="chapter" data-level="8.3" data-path="bibs.html"><a href="bibs.html#sec8-3"><i class="fa fa-check"></i><b>8.3</b> 中文文献风格的设置</a></li>
+<li class="chapter" data-level="8.4" data-path="bibs.html"><a href="bibs.html#sec8-4"><i class="fa fa-check"></i><b>8.4</b> 文献库的建立工具</a></li>
+</ul></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="mjx.html"><a href="mjx.html"><i class="fa fa-check"></i><b>A</b> <code>Mathjax</code>的离线安装与使用</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="mjx.html"><a href="mjx.html#sec9-1"><i class="fa fa-check"></i><b>A.1</b> mathjax 说明</a></li>
+<li class="chapter" data-level="A.2" data-path="mjx.html"><a href="mjx.html#sec9-2"><i class="fa fa-check"></i><b>A.2</b> 调用远程服务器上的<code>mathjax</code></a></li>
+<li class="chapter" data-level="A.3" data-path="mjx.html"><a href="mjx.html#sec9-3"><i class="fa fa-check"></i><b>A.3</b> <code>mathjax</code>本地服务器的安装与使用</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="biber.html"><a href="biber.html"><i class="fa fa-check"></i><b>B</b> 基于<code>biblatex</code>生成参考文献</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="biber.html"><a href="biber.html#sec10-1"><i class="fa fa-check"></i><b>B.1</b> bibtex 与 biber, natbib 与 biblatex 比较</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="biber.html"><a href="biber.html#概述"><i class="fa fa-check"></i><b>B.1.1</b> 概述</a></li>
+<li class="chapter" data-level="B.1.2" data-path="biber.html"><a href="biber.html#natbib-的优点"><i class="fa fa-check"></i><b>B.1.2</b> <code>natbib</code> 的优点</a></li>
+<li class="chapter" data-level="B.1.3" data-path="biber.html"><a href="biber.html#biblatex-的优缺点"><i class="fa fa-check"></i><b>B.1.3</b> biblatex 的优缺点</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="biber.html"><a href="biber.html#sec10-2"><i class="fa fa-check"></i><b>B.2</b> biblatex 的在<span class="math inline">\(\TeX\)</span>中的使用样例</a></li>
+<li class="chapter" data-level="B.3" data-path="biber.html"><a href="biber.html#sec10-3"><i class="fa fa-check"></i><b>B.3</b> <code>biblatex</code>在<code>bookdown</code>中的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bookdown中文书稿写作手册</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="biber" class="section level1" number="10">
+<h1><span class="header-section-number">B</span> 基于<code>biblatex</code>生成参考文献</h1>
+<p>附录<a href="biber.html#biber">B</a>介绍了 文献库扩展包<code>biblatex</code>的使用，及其与<code>natbib</code>的比较. <span class="citation">(<a href="#ref-R-base" role="doc-biblioref">R Core Team, 2021</a>; <a href="#ref-xie2015" role="doc-biblioref">Xie, 2015a</a>)</span></p>
+<div id="sec10-1" class="section level2" number="10.1">
+<h2><span class="header-section-number">B.1</span> bibtex 与 biber, natbib 与 biblatex 比较</h2>
+<div id="概述" class="section level3" number="10.1.1">
+<h3><span class="header-section-number">B.1.1</span> 概述</h3>
+<ul>
+<li><p><code>bibtex</code> 与 <code>biber</code> 是处理参考文献信息二个外部程序(backend), 它们起
+到将<span class="math inline">\(\LaTeX\)</span> 文档与 <code>bib</code> 文档交互的作用；</p></li>
+<li><p><code>natbib</code> 与 <code>biblatex</code> 是二个处理参考文献(bibliography) 和引用(citation)的<span class="math inline">\(\TeX\)</span> 宏包; <code>natbib</code> 仅通过<code>bibtex</code> 起作用，而<code>biblatex</code> 可通过
+<code>biber</code> 起作用；</p></li>
+</ul>
+</div>
+<div id="natbib-的优点" class="section level3" number="10.1.2">
+<h3><span class="header-section-number">B.1.2</span> <code>natbib</code> 的优点</h3>
+<ul>
+<li><p>natbib 的优点：</p>
+<ul>
+<li>有大量与期刊/出版商对应的风格文件(.sty);</li>
+</ul></li>
+<li><p>natbib 的缺点:</p>
+<ul>
+<li><p>修改风格文件较为困难；</p></li>
+<li><p>其设计的局限性：主要为自然科学类期刊的<code>Author-Year</code> 及数字引
+用方式设计.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="biblatex-的优缺点" class="section level3" number="10.1.3">
+<h3><span class="header-section-number">B.1.3</span> biblatex 的优缺点</h3>
+<ul>
+<li><p><code>biblatex</code> 被认为是<span class="math inline">\(\LaTeX\)</span> 中处理参考文献(bibliography) 的很有前途的宏包，功能强大，提供了很多可定制选项。</p></li>
+<li><p><code>biblatex</code> 的优点</p>
+<ul>
+<li>提供<code>natbib</code> 的 <code>Author-year</code> 和数字引用方式，因此可视为natbib
+的扩展；</li>
+<li>通过<span class="math inline">\(\LaTeX\)</span> 的宏控制文献的风格，方便修改;</li>
+<li>提供许多人性化的引用风格(例如<code>author-title</code>);</li>
+<li>提供人性化的文献数据库域名(字段);</li>
+<li>直接支持多文献库与文献分类;</li>
+<li>提供大量标准与拓展的<code>biblatex</code> 风格(见使用手册);</li>
+<li>文献可按主题分割为部分;</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="sec10-2" class="section level2" number="10.2">
+<h2><span class="header-section-number">B.2</span> biblatex 的在<span class="math inline">\(\TeX\)</span>中的使用样例</h2>
+<ol style="list-style-type: decimal">
+<li>使用</li>
+</ol>
+<pre><code>  \usepackage[style=authoryear,backend=biber]{biblatex}</code></pre>
+<p>(代替<code>\usepackage[authoryear]{natbib}</code>);</p>
+<ol start="2" style="list-style-type: decimal">
+<li>加载一个或多个 <code>bib</code> 文献库文件:</li>
+</ol>
+<pre><code>  \addbibresource{file1.bib}    
+  \addbibresource{file2.bib}</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>要出现文献的地方输入</li>
+</ol>
+<pre><code>  \printbibliography</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>引用: 使用<code>\textcite</code> 代替<code>\citet</code>; 使用<code>\parencite</code> 代替<code>\citep</code></p></li>
+<li><p>编译方式</p></li>
+</ol>
+<pre><code>XELATEX(或LATEX, pdfLATEX)
+biber(代替bibtex)
+XELATEX(或LATEX, pdfLATEX)
+XELATEX(或LATEX, pdfLATEX)</code></pre>
+</div>
+<div id="sec10-3" class="section level2" number="10.3">
+<h2><span class="header-section-number">B.3</span> <code>biblatex</code>在<code>bookdown</code>中的使用</h2>
+<ol style="list-style-type: decimal">
+<li><p>在<code>index.Rmd</code>文件的<code>yml</code>部分增加选项</p>
+<pre><code>biblatexoptions: [refsegment=chapter]
+biblio-style: gb7714-2015ay</code></pre>
+<p>注意<code>[]</code>内可增加其他<code>biblatex</code>选项(参考<code>biblatex</code>使用手册)</p></li>
+<li><p>在需要出现文献的地方(如每一章后)加</p>
+<pre><code>\printbibliography[segment=\therefsegment, heading=subbibliography, title={参考文献}]</code></pre></li>
+<li><p>在<code>_output.yml</code>文件的<code>bookdown::pdf_book:</code>增加选项(前面空二格)</p>
+<pre><code> citation_package: biblatex</code></pre>
+<p>注：若要<code>bibtex</code>驱动文献的排版，只需要在这一步改为<code>citation_package: natbib</code></p></li>
+<li><p>如上所述，LaTeX 要生成最终的 PDF 文档，如果含有交叉引用(图形、表格、公式、章节、文献等)、BibTeX/biber、术语表等等，通常需要多次编译才行。而使用 Latexmk 则只需运行一次，它会自动帮你做好其它所有事情。尽管在你已经安装的 LaTeX 发行版本已经包含了 Latexmk，但我们需要运行它。使用<code>XeLaTeX</code>的编译格式为</p></li>
+</ol>
+<pre><code>latexmk -pvc -xelatex file.tex</code></pre>
+<p>其中选项<code>pvc</code>表示检查输入文件的更改并预览结果。在Rstudio中你只需要添加下面的代码块。</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="biber.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">RSTUDIO_PDFLATEX =</span> <span class="st">&quot;latexmk&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-R-base" class="csl-entry">
+R Core Team. (2021). <em>R: A language and environment for statistical computing</em>. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from <a href="https://www.R-project.org/">https://www.R-project.org/</a>
+</div>
+<div id="ref-xie2015" class="csl-entry">
+Xie, Y. (2015a). <em>Dynamic documents with <span>R</span> and knitr</em> (2nd ed.). Boca Raton, Florida: Chapman; Hall/CRC. Retrieved from <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mjx.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/010-biblatex.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-tutorial.pdf", "bookdown-tutorial.epub"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
